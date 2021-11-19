@@ -1,18 +1,25 @@
 package com.rikkei.training.activity.trainingapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.rikkei.training.activity.trainingapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private static final String  TAG = "Activity Main";
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
        Log.e(TAG, "onCreate: " + TAG );
+       binding.btnActA.setOnClickListener(v -> startActivity(new Intent(this, ActivityA.class)));
     }
 
     @Override

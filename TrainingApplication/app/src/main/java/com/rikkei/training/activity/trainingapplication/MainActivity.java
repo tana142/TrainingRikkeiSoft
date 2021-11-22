@@ -2,6 +2,7 @@ package com.rikkei.training.activity.trainingapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.btn_fragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(savedInstanceState == null){
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .setReorderingAllowed(true)
+                            .add(R.id.container, Fragment1.Instance())
+                            .commit();
+                }
+            }
+        });
        Log.e(TAG, "onCreate: " + TAG );
     }
 
